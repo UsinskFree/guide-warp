@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>УСИНСК ПРОТИВ ЦЕНЗУРЫ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f7fc; /* кобальтовый оттенок серого (светлый, воздушный) */
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            color: #1a2639;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(0, 20, 60, 0.25);
+            padding: 2.5rem 2.2rem;
+        }
+
+        /* заголовок страницы */
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0039a6; /* синий 0,57,166 */
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            border-left: 6px solid #009b3a;
+            padding-left: 1.5rem;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+
+        /* универсальные заголовки абзацев */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0039a6;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #e6ecf5;
+            padding-bottom: 0.3rem;
+        }
+
+        /* текст абзацев */
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #1f2a44;
+        }
+
+        /* специальный блок для ссылки внутри абзаца */
+        .ext-link {
+            color: #009b3a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px dotted #009b3a;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .ext-link:hover {
+            color: #006b28;
+            border-bottom: 2px solid #006b28;
+        }
+
+        /* кнопки */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0039a6; /* синий */
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px; /* полностью скруглённые, современно */
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s, transform 0.1s;
+            box-shadow: 0 4px 8px rgba(0, 57, 166, 0.2);
+            min-width: 160px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn:hover {
+            background-color: #002c7a; /* более тёмный оттенок синего */
+            box-shadow: 0 8px 14px rgba(0, 57, 166, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 57, 166, 0.3);
+        }
+
+        /* вариант зелёной кнопки (для скачивания) */
+        .btn-green {
+            background-color: #009b3a; /* зелёный */
+            box-shadow: 0 4px 8px rgba(0, 155, 58, 0.25);
+        }
+
+        .btn-green:hover {
+            background-color: #007a2d; /* глубокий зелёный */
+            box-shadow: 0 8px 14px rgba(0, 155, 58, 0.35);
+        }
+
+        /* горизонтальная группа кнопок (шаг 2) */
+        .horizontal-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1rem 0 2.5rem 0;
+        }
+
+        .horizontal-buttons .btn {
+            min-width: 180px;
+            flex: 0 1 auto;
+        }
+
+        /* шаги (нумерованный список) нестандартные, но мы просто используем параграфы */
+        .step-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 1.8rem 0 0.5rem 0;
+            color: #0039a6;
+            background: #eef3fc;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        /* дополнительный отступ для кнопки после шага 1 */
+        .download-area {
+            margin: 1rem 0 1.8rem 0;
+        }
+
+        /* жирное предупреждение */
+        .warning-title {
+            color: #b34b4b;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* маленький текст «поделись» */
+        .share-note {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0039a6;
+            background: #e4edf5;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 1.8rem 0 0.5rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #d6e0f0;
+            margin: 2rem 0 1rem;
+        }
+
+        /* адаптивность */
+        @media (max-width: 550px) {
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .horizontal-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>УСИНСК ПРОТИВ ЦЕНЗУРЫ</h1>
+
+        <!-- блок 1 -->
+        <div class="section-title">Конституция РФ (Статья 23, подпункт 2)</div>
+        <p>Каждый имеет право на тайну переписки, телефонных переговоров, почтовых, телеграфных и иных сообщений. Ограничение этого права допускается только на основании судебного решения.</p>
+
+        <!-- блок 2 -->
+        <div class="section-title">Конституция РФ (Статья 29)</div>
+        <p>
+            1. Каждому гарантируется свобода мысли и слова.<br>
+            4. Каждый имеет право свободно искать, получать, передавать, производить и распространять информацию любым законным способом. Перечень сведений, составляющих государственную тайну, определяется федеральным законом.<br>
+            5. Гарантируется свобода массовой информации. Цензура запрещается.
+        </p>
+
+        <!-- блок 3: внимание -->
+        <div class="warning-title">⚠️ Внимание! ⚠️</div>
+        <p>
+            Помните что намеренный доступ к ресурсам из 
+            <a href="https://minjust.gov.ru/ru/extremist-materials/" target="_blank" rel="noopener noreferrer" class="ext-link">реестра экстремистских материалов</a> 
+            является нарушением законодательства рф!
+        </p>
+
+        <!-- блок 4 -->
+        <div class="section-title">Испытываете на себе государственную цензуру? Мы поможем!</div>
+
+        <!-- Шаг 1 -->
+        <div class="step-text">Шаг 1: Скачайте и установите приложение Амнезия ВПН</div>
+        <div class="download-area">
+            <a href="https://storage.googleapis.com/amnezia/amnezia.org" target="_blank" rel="noopener noreferrer" class="btn btn-green">📥 Скачать</a>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div class="step-text">Шаг 2: Получить конфиг (файл с настройками подключения)</div>
+        <!-- горизонтальные кнопки -->
+        <div class="horizontal-buttons">
+            <a href="https://warp-generator.github.io/warp/" target="_blank" rel="noopener noreferrer" class="btn">🌐 с сайта-генератора</a>
+            <a href="https://t.me/warp_generator_bot" target="_blank" rel="noopener noreferrer" class="btn">✈️ из телеграмм-бота</a>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div class="step-text">Шаг 3: Добавьте скачанный файл в приложение</div>
+        <p style="margin-bottom: 1rem;">Импортируйте конфигурацию в Amnezia VPN, используя кнопку «Добавить конфигурацию» в приложении.</p>
+
+        <!-- Шаг 4 -->
+        <div class="share-note">Шаг 4: Поделись этим сайтом с другом</div>
+        <p style="margin-top: 0.5rem;">
+            Отправь ссылку близким — свобода информации важна для каждого.
+        </p>
+
+        <!-- небольшая декоративная черта и скромный футер (современный штрих) -->
+        <hr>
+        <div style="text-align: center; color: #6a7a8e; font-size: 0.9rem;">
+            Усинск против цензуры - каждый имеет право знать
+        </div>
+    </div>
+</body>
+</html>
